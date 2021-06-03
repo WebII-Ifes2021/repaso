@@ -1,0 +1,46 @@
+<p class="texto-padre">Vamosss papaaaaaa!</p>
+
+<mat-slider min="1" max="100" step="1" value="1"></mat-slider>
+
+<mat-form-field appearance="fill">
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate placeholder="Start date">
+        <input matEndDate placeholder="End date">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+</mat-form-field>
+
+
+<form [formGroup]="autoForm" name="autoForm">
+    <mat-form-field appearance="legacy">
+        <mat-label>Valor del Botón</mat-label>
+        <input formControlName="valorBtn" matInput placeholder="Valor del Botón">
+    </mat-form-field>
+    Formulario: {{this.autoForm.value | json | uppercase}}
+    El mejor: {{nombre | uppercase | titlecase}}
+    <p>{{fecha | date}}</p>
+    <!-- <mat-form-field appearance="legacy">
+        <mat-label>Color</mat-label>
+        <input formControlName="color" matInput placeholder="Color De Auto">
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+        <mat-label>Patente</mat-label>
+        <input formControlName="patente" matInput placeholder="Ptente De Auto">
+    </mat-form-field> -->
+</form>
+
+<!-- Pipe {{ 50 | KmAMIllaPipe }} -->
+Distancia en millas: {{distanciaEnMillas}}
+
+<button mat-button [disabled]="autoForm.invalid" (click)="guardar()" color="primary">Guardar</button>
+
+<app-pirulo [txtButton]='valorButton' (btnEvent)="onRecibePadre($event)"></app-pirulo>
+
+<div *ngFor="let red of redeem">
+    <p>{{red.name}}</p>
+    <p>{{red.category}}</p>
+    <p>{{red.cost}}</p>
+</div>
